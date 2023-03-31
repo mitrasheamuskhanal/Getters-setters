@@ -6,7 +6,7 @@ properties = combine aspects of both fields and methods ( Share name with a fiel
 get accessor = used to return the property value
 set accessor = used to assign a new value
 value keyword = defines the value assigned by the set (Parameter)
-Parameter = Name of variable in a methods which revive a value from the callen when methods is called 
+Parameter = Name of variable in a methods which revive a value from the caller when methods is called 
  
  
  */
@@ -19,21 +19,41 @@ namespace Getters___setters
         {
 
             Car Car = new Car(200);
+            Console.Write("Speed of car : ");
+            Car.Speed = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine(Car.Speed);
+            Console.ReadKey();
         }
     }
     class Car
     {
-        public int speed;
-        public Car(int speed) {
-        
-        if (speed < 200)
+        private int speed;
+
+        public Car(int speed)
+        {
+            Speed = speed;
+        }
+
+        public int Speed
+        {
+            get { return Speed; }
+            set
             {
-                speed = 200;
+                if (Speed > 200)
+                {
+                    Speed = 200;
+                }
+
+                else
+                {
+                    Speed = value;
+                }
             }
-        else if (speed >200)
-            {
-                speed = Value;
-            }
-               
+
+
+
+
+        }
     }
 }
